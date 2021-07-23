@@ -51,8 +51,10 @@ const PollingOutputTable = (props) => {
   }, [urlName]);
 
   const refreshList = () => {
+    setLoading(true);
     axios.get("http://localhost:8080/pollings/" + urlName).then((response) => {
       setPollings(response.data);
+      setLoading(false);
     });
   };
 
